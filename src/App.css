@@ -661,3 +661,300 @@ useEffect(() => {
     transform: translateY(100vh);
   }
 }
+/* ================================
+   GLOBAL SCROLL FIX (CRITICAL)
+================================ */
+html, body {
+  height: auto;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ================================
+   CINEMATIC REVIEW ROOT
+================================ */
+.cinematic-review {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background: #000;
+  color: white;
+  transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
+  padding-top: 20px;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ================================
+   CINEMATIC SECTIONS
+================================ */
+.cinematic-section {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh; /* Mobile-safe viewport */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+}
+
+/* ================================
+   SCROLL PROGRESS
+================================ */
+.scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.scroll-progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #FF6B8B, #4ECDC4);
+  transition: width 0.1s ease;
+}
+
+/* ================================
+   SCENE BACKGROUNDS
+================================ */
+.hero-scene {
+  background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+  height: 50svh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-scene {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.memories-scene {
+  background: linear-gradient(135deg, #0f3460 0%, #1a1a2e 100%);
+}
+
+.messages-scene {
+  background: radial-gradient(circle at 30% 30%, #2d3436 0%, #1a1a2e 100%);
+}
+
+.finale-scene {
+  background: linear-gradient(135deg, #000428 0%, #004e92 100%);
+}
+
+/* ================================
+   SCENE INDICATOR
+================================ */
+.scene-indicator {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 1000;
+  text-align: right;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem;
+  border-radius: 15px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+}
+
+.scene-title {
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-transform: uppercase;
+  min-width: 150px;
+}
+
+.scene-dots {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+.scene-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scene-dot.active {
+  background: #FF6B8B;
+  transform: scale(1.3);
+  box-shadow: 0 0 15px #FF6B8B;
+}
+
+/* ================================
+   HERO
+================================ */
+.hero-content {
+  text-align: center;
+  max-width: 800px;
+  z-index: 2;
+}
+
+.hero-quote {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-top: 2rem;
+  opacity: 0.9;
+  font-style: italic;
+  letter-spacing: 1px;
+  animation: fadeIn 2s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 0.9; transform: translateY(0); }
+}
+
+/* ================================
+   OPENING CURTAINS
+================================ */
+.opening-curtains {
+  position: absolute; /* FIXED → ABSOLUTE */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  z-index: 100;
+  transition: transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(0);
+  pointer-events: none;
+}
+
+.opening-curtains.opened {
+  transform: translateX(-100%);
+}
+
+/* ================================
+   INTERACTION PROMPT
+================================ */
+.interaction-prompt {
+  position: absolute;
+  bottom: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  animation: pulse 2s infinite;
+  pointer-events: none;
+}
+
+.pulse-circle {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #FF6B8B;
+  border-radius: 50%;
+  margin: 0 auto;
+  animation: pulseCircle 2s infinite;
+}
+
+@keyframes pulseCircle {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  50% { transform: scale(1.2); opacity: 0.4; }
+  100% { transform: scale(0.8); opacity: 0.8; }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+/* ================================
+   SCENE CONTENT ANIMATION
+================================ */
+.scene-content {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  max-width: 1200px;
+}
+
+.scene-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ================================
+   CINEMATIC BUTTON
+================================ */
+.cinematic-button {
+  background: linear-gradient(45deg, #FF6B8B, #4ECDC4);
+  color: white;
+  border: none;
+  padding: 1.5rem 3rem;
+  font-size: 1.2rem;
+  border-radius: 50px;
+  cursor: pointer;
+  margin-top: 3rem;
+  letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.cinematic-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(255, 107, 139, 0.5);
+}
+
+/* ================================
+   FIREWORKS
+================================ */
+.fireworks-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.cinematic-firework {
+  position: absolute;
+  border-radius: 50%;
+  animation: cinematicFirework 2s ease-out forwards;
+}
+
+@keyframes cinematicFirework {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(0); opacity: 0; }
+}
+
+/* ================================
+   FINALE EFFECTS
+================================ */
+.fade-out {
+  opacity: 0;
+  transform: scale(1.1);
+  transition: all 2s ease;
+}
+
+.midnight-transition {
+  animation: midnightGlow 3s ease-in-out;
+}
+
+@keyframes midnightGlow {
+  0% { filter: brightness(1); }
+  50% { filter: brightness(1.5); }
+  100% { filter: brightness(1); }
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+  .hero-quote { font-size: 1.2rem; }
+  .cinematic-button { font-size: 1rem; padding: 1.2rem 2rem; }
+  .cinematic-section { padding: 2rem 1rem; }
+}

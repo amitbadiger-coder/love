@@ -1,6 +1,8 @@
 /* CINEMATIC REVIEW STYLES */
 .cinematic-review {
   position: relative;
+    overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   
   overflow-x: hidden;
   background: #000;
