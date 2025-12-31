@@ -1,38 +1,663 @@
-.App {
-  text-align: center;
+body{
+  background-color: black;
+  color:white
+}
+/* ===== MAP WRAPPER ===== */
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border-radius: 40px;
+  overflow: hidden;
+  box-shadow: 0 40px 120px rgba(255, 77, 109, 0.35);
+  background: #000;
 }
 
-.App-logo {
-  height: 40vmin;
+/* ===== LEAFLET MAP ===== */
+.map-wrapper .leaflet-container {
+  width: 100%;
+  height: 100%;
+  filter: saturate(1.2) contrast(1.05);
+}
+
+/* ===== DARK ROMANTIC OVERLAY ===== */
+.map-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 77, 109, 0.25),
+    rgba(0, 0, 0, 0.75)
+  );
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* ===== TEXT OVERLAY ===== */
+.map-overlay {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  text-align: center;
+  z-index: 10;
+  color: #fff;
+  padding: 40px;
 }
 
-.App-link {
-  color: #61dafb;
+.map-overlay h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+  text-shadow: 0 0 25px rgba(255, 77, 109, 0.9);
 }
 
-@keyframes App-logo-spin {
+.map-overlay p {
+  font-size: 1.4rem;
+  opacity: 0.9;
+}
+
+/* ===== SOFT HEART PULSE ===== */
+.map-overlay h1::after {
+  content: " ❤️";
+  animation: pulse 1.6s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .map-wrapper {
+    height: 420px;
+    border-radius: 25px;
+  }
+
+  .map-overlay h1 {
+    font-size: 2.2rem;
+  }
+}
+/* ===== FULL SCREEN LOVE GATE ===== */
+.gate {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(255, 105, 180, 0.25), transparent 40%),
+    linear-gradient(180deg, #05080b, #0b1114, #05080b);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 40px;
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== TITLE ===== */
+.gate h1 {
+  font-size: 3.2rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  text-shadow: 0 0 30px rgba(255, 105, 180, 0.9);
+}
+
+/* ===== SUBTEXT ===== */
+.gate p {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  margin-bottom: 50px;
+  line-height: 1.6;
+}
+
+/* ===== INPUT ===== */
+.gate input {
+  width: 320px;
+  padding: 18px 25px;
+  font-size: 1.1rem;
+  border-radius: 40px;
+  border: none;
+  outline: none;
+  text-align: center;
+  letter-spacing: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 0 2px rgba(255, 105, 180, 0.4),
+              0 10px 30px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s ease;
+}
+
+.gate input:focus {
+  box-shadow: inset 0 0 0 2px #ff7eb3,
+              0 0 25px rgba(255, 105, 180, 0.8);
+}
+
+/* ===== BUTTON ===== */
+.gate button {
+  margin-top: 40px;
+  padding: 16px 55px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  color: #fff;
+  background: linear-gradient(135deg, #ff5fa2, #ff9fd0);
+  box-shadow: 0 20px 50px rgba(255, 105, 180, 0.7);
+  transition: all 0.45s ease;
+}
+
+.gate button:hover {
+  transform: translateY(-5px) scale(1.08);
+  box-shadow: 0 35px 80px rgba(255, 105, 180, 1);
+}
+
+/* ===== SOFT FLOATING HEARTS (BACKGROUND FEEL) ===== */
+.gate::before,
+.gate::after {
+  content: "❤️";
+  position: absolute;
+  font-size: 2.5rem;
+  opacity: 0.08;
+  animation: float 8s infinite linear;
+}
+
+.gate::after {
+  left: 70%;
+  animation-duration: 10s;
+}
+
+@keyframes float {
   from {
-    transform: rotate(0deg);
+    bottom: -10%;
+    transform: translateX(0) rotate(0deg);
   }
   to {
-    transform: rotate(360deg);
+    bottom: 110%;
+    transform: translateX(-40px) rotate(360deg);
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+  .gate h1 {
+    font-size: 2.4rem;
+  }
+
+  .gate input {
+    width: 260px;
+  }
+}
+/* Midnight.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cinzel:wght@400;700;900&family=Dancing+Script:wght@400;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  overflow: hidden;
+  height: 100%;
+  background: #000;
+}
+
+.midnight {
+  position: relative;
+  min-height: 100vh;
+  background: 
+    radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%),
+    linear-gradient(to bottom, rgba(13, 29, 49, 0.8), rgba(12, 13, 19, 0.9));
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  overflow: hidden;
+  animation: cosmicEntrance 3s ease-out;
+}
+
+/* Cosmic Background Animation */
+@keyframes cosmicEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Stars Background */
+.midnight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(1px 1px at 20% 30%, #fff 50%, transparent 100%),
+    radial-gradient(1px 1px at 40% 70%, #fff 50%, transparent 100%),
+    radial-gradient(2px 2px at 60% 20%, #fff 50%, transparent 100%),
+    radial-gradient(1px 1px at 80% 50%, #fff 50%, transparent 100%),
+    radial-gradient(2px 2px at 10% 80%, #fff 50%, transparent 100%),
+    radial-gradient(1px 1px at 90% 90%, #fff 50%, transparent 100%);
+  background-size: 200px 200px;
+  animation: twinkle 4s infinite alternate;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+}
+
+/* Enhanced Fireworks */
+.fireworks {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Create multiple firework elements dynamically */
+.fireworks::before,
+.fireworks::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  animation: fireworkExplosion 2s ease-out infinite;
+}
+
+.fireworks::before {
+  top: 30%;
+  left: 20%;
+  width: 5px;
+  height: 5px;
+  background: #FF6B8B;
+  box-shadow: 
+    0 0 20px #FF6B8B,
+    0 0 40px #FF6B8B,
+    0 0 60px #FF6B8B;
+}
+
+.fireworks::after {
+  top: 40%;
+  right: 25%;
+  width: 4px;
+  height: 4px;
+  background: #4ECDC4;
+  box-shadow: 
+    0 0 20px #4ECDC4,
+    0 0 40px #4ECDC4,
+    0 0 60px #4ECDC4;
+}
+
+/* Additional firework elements */
+.fireworks div {
+  position: absolute;
+  border-radius: 50%;
+  animation: fireworkExplosion 2s ease-out infinite;
+}
+
+/* Firework Animation */
+@keyframes fireworkExplosion {
+  0% {
+    transform: translateY(100vh) scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 0;
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Midnight Content */
+.midnight-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  text-align: center;
+  animation: contentReveal 3s ease-out;
+}
+
+@keyframes contentReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Main Heading */
+.midnight-content h1 {
+  font-family: 'Cinzel', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 3rem;
+  color: #fff;
+  text-shadow: 
+    0 0 10px rgba(255, 107, 139, 0.8),
+    0 0 20px rgba(255, 107, 139, 0.6),
+    0 0 30px rgba(255, 107, 139, 0.4);
+  position: relative;
+  padding-bottom: 1.5rem;
+  letter-spacing: 2px;
+  animation: titleGlow 3s infinite alternate;
+}
+
+@keyframes titleGlow {
+  0% {
+    text-shadow: 
+      0 0 10px rgba(255, 107, 139, 0.8),
+      0 0 20px rgba(255, 107, 139, 0.6);
+  }
+  100% {
+    text-shadow: 
+      0 0 20px rgba(255, 107, 139, 1),
+      0 0 40px rgba(255, 107, 139, 0.8),
+      0 0 60px rgba(255, 107, 139, 0.4);
+  }
+}
+
+/* Heart Emoji Animation */
+.midnight-content h1::after {
+  content: '❤️';
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 3rem;
+  animation: heartbeat 1.2s infinite ease-in-out;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Message Styling */
+.midnight-content p {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  line-height: 1.8;
+  margin: 2rem 0;
+  text-align: left;
+  color: rgba(255, 255, 255, 0.95);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  animation: textReveal 4s ease-out;
+}
+
+@keyframes textReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Name Highlighting */
+.midnight-content p strong {
+  color: #FFD166;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 209, 102, 0.5);
+  position: relative;
+  padding: 0 2px;
+}
+
+.midnight-content p strong::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #FFD166, transparent);
+  animation: underlineGlow 2s infinite;
+}
+
+@keyframes underlineGlow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Line Breaks Styling */
+.midnight-content p br {
+  margin-bottom: 0.5rem;
+  display: block;
+  content: '';
+}
+
+/* Quote Marks */
+.midnight-content p::before,
+.midnight-content p::after {
+  position: absolute;
+  font-size: 4rem;
+  color: rgba(255, 107, 139, 0.3);
+  font-family: 'Dancing Script', cursive;
+}
+
+.midnight-content p::before {
+  content: '❝';
+  top: 10px;
+  left: 10px;
+}
+
+.midnight-content p::after {
+  content: '❞';
+  bottom: 10px;
+  right: 10px;
+}
+
+/* Floating Hearts Animation */
+.midnight::after {
+  content: '❤️💫✨🌟';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  font-size: 2rem;
+  animation: floatHearts 20s linear infinite;
+}
+
+@keyframes floatHearts {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Shimmer Effect on Text */
+.midnight-content {
+  position: relative;
+}
+
+.midnight-content::before {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.1) 50%,
+    transparent 70%
+  );
+  animation: shimmer 3s infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .midnight-content {
+    padding: 2rem 1rem;
+  }
+  
+  .midnight-content h1 {
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+  }
+  
+  .midnight-content h1::after {
+    position: relative;
+    display: block;
+    margin: 1rem auto;
+  }
+  
+  .midnight-content p {
+    font-size: 1.2rem;
+    padding: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .midnight-content p::before,
+  .midnight-content p::after {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .midnight-content h1 {
+    font-size: 2rem;
+  }
+  
+  .midnight-content p {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+  
+  .midnight-content p::before,
+  .midnight-content p::after {
+    font-size: 2rem;
+  }
+}
+
+/* Mouse Following Stars */
+.star-cursor {
+  position: fixed;
+  width: 4px;
+  height: 4px;
+  background: white;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 0 10px white;
+  animation: starPulse 1s infinite alternate;
+}
+
+@keyframes starPulse {
+  0% { opacity: 0.3; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.2); }
+}
+
+/* Add this to your Midnight.jsx to enable star cursor effect */
+/*
+useEffect(() => {
+  const createStar = (x, y) => {
+    const star = document.createElement('div');
+    star.className = 'star-cursor';
+    star.style.left = `${x}px`;
+    star.style.top = `${y}px`;
+    document.body.appendChild(star);
+    
+    setTimeout(() => {
+      star.remove();
+    }, 1000);
+  };
+
+  document.addEventListener('mousemove', (e) => {
+    if (Math.random() > 0.7) { // 30% chance to create star
+      createStar(e.clientX, e.clientY);
+    }
+  });
+}, []);
+*/
+
+/* Glass Morphism Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.36),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* Final Countdown Timer (Optional) */
+.countdown-timer {
+  font-family: 'Cinzel', monospace;
+  font-size: 1.2rem;
+  color: #4ECDC4;
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  animation: timerPulse 2s infinite;
+}
+
+@keyframes timerPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* Snow/Confetti Effect */
+.snowflake {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.8;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
   }
 }

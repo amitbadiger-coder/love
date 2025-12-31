@@ -1,0 +1,41 @@
+.map-story {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* Overlay text on map */
+.story-overlay {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+  z-index: 500;
+  pointer-events: none;
+}
+
+.story-overlay h2 {
+  font-size: 1.8rem;
+  margin: 8px 0;
+  letter-spacing: 1px;
+  color: white;
+}
+
+.continue-btn {
+  margin-top: 20px;
+  padding: 12px 36px;
+  font-size: 1rem;
+  border: 1px solid #ff4d6d;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  cursor: pointer;
+  pointer-events: all;
+  transition: all 0.4s ease;
+}
+
+.continue-btn:hover {
+  background: #ff4d6d;
+  color: black;
+  transform: translateY(-2px);
+}
