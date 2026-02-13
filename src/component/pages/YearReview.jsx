@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState, useCallback } from "react";
-import Timeline from "../timeline/Timeline";
-import SectionTitle from "../common/SectionTitle";
-import MemoryGallary from "../gallary/MemoryGallary";
-import TypewriterMessages from "../msg/TypewriterMessages";
-import NewYearCountdown from "../countdown/NewYearCountdown";
+// import { useNavigate } from "react-router-dom";
+import { useEffect, useRef, useState,  } from "react";
+// import Timeline from "../timeline/Timeline";
+// import SectionTitle from "../common/SectionTitle";
+// import MemoryGallary from "../gallary/MemoryGallary";
+// import TypewriterMessages from "../msg/TypewriterMessages";
+// import NewYearCountdown from "../countdown/NewYearCountdown";
 import "../assets/styles/yearReview.css";
 
 const YearReview =()=> {
