@@ -5,7 +5,7 @@ export default function PasswordGate() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const SECRET = "shreesakhi"; // change to something meaningful
+  const SECRET = "at"; // change to something meaningful
 
   const handleSubmit = () => {
     if (password === SECRET) {
@@ -21,8 +21,8 @@ export default function PasswordGate() {
     <div className="gate">
      <h1>For My Shreesakhi ❤️</h1>
 <p>
-  This space was made only for you, Tanu.<br />
-  Enter the one word that holds our forever.
+  Over Acting madkont erod vtt!!!! <br />
+  Kishyod bid jara enn re .. mature aagu Naii!!!!!!!!!!
 </p>
 
 
