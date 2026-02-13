@@ -5,11 +5,11 @@ export default function PasswordGate() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const SECRET = "amitlovestanu"; // change to something meaningful
+  const SECRET = "shreesakhi"; // change to something meaningful
 
   const handleSubmit = () => {
     if (password === SECRET) {
-      alert("kisadi la... Dodd")
+      alert("welcome to my world!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
       navigate("/welcome");
     } else {
       alert("Not quite… but my heart knows you ❤️");
