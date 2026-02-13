@@ -1,31 +1,34 @@
 import { useNavigate } from "react-router-dom";
 import Musicplayer from "../music/Musicplayer";
 import AnimatedText from "../common/AnimatedText";
-import "../assets/styles/landing.css"
+import "../assets/styles/landing.css";
 
 export default function Landing() {
   const navigate = useNavigate();
 
   return (
-    <div className="landing">
-      {/* Background music */}
+    <div className="landing valentine-theme">
+      {/* Romantic Background Music */}
       <Musicplayer />
 
-      {/* Cinematic text */}
+      {/* Romantic Text */}
       <div className="landing-content">
-        <AnimatedText text="No matter the distance," />
-        <AnimatedText text="we begin this new year together." />
+        <AnimatedText text="From the moment you came into my life," />
+        <AnimatedText text="every day became more beautiful ❤️" />
+        <AnimatedText text="This Valentine's Day," />
+        <AnimatedText text="I just want to say..." />
+        <AnimatedText text="I Love You More Than Words Can Ever Express 💖" />
 
         <button
-          className="start-btn"
-          onClick={() => navigate("/distance")}
+          className="start-btn love-btn"
+          onClick={() => navigate("/memories")}
         >
-          Start Our Journey ❤️
+          Open My Heart 💌
         </button>
       </div>
 
-      {/* Soft vignette overlay */}
-      <div className="vignette" />
+      {/* Soft romantic overlay */}
+      <div className="vignette romantic-glow" />
     </div>
   );
 }

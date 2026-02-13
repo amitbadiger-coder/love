@@ -5,7 +5,8 @@ import L from "leaflet";
 // import "leaflet/dist/leaflet.css";
 import amit from "../../images/WhatsApp Image 2025-12-31 at 10.38.38 PM.jpeg"
 
-const myLocation = [16.4285, 74.6010];     // Nidasoshi
+const myLocation = [12.9716, 77.5946];
+    // Nidasoshi
 const herLocation = [17.6599, 75.9064];   // Solapur
 
 const icon = new L.Icon({

@@ -14,7 +14,8 @@ export default function MapStory() {
 
       {/* Story Overlay */}
       <div className="story-overlay">
-        <AnimatedText text="From Nidasoshi to Solapur," />
+        <AnimatedText text="From 
+        Banglore to Solapur," />
         <AnimatedText text="two cities, one story." />
 
         <button
